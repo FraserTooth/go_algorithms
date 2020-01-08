@@ -13,7 +13,7 @@ package maximum_subarray_sum
 // Empty list is considered to have zero greatest sum.
 // Note that the empty list or array is also a valid sublist/subarray.
 
-func MaximumSubarraySum(numbers []int) int {
+func MaximumSubarraySumLoops(numbers []int) int {
 	sum := 0
 
 	var totNums = len(numbers)
@@ -35,4 +35,22 @@ func MaximumSubarraySum(numbers []int) int {
 	}
 
 	return sum
+}
+
+func max(a, b int) int {
+	if a > b {
+		return a
+	} else {
+		return b
+	}
+}
+
+func MaximumSubarraySum(numbers []int) int {
+	res, sum := 0, 0
+	for i := range numbers {
+		sum += numbers[i]
+		res = max(res, sum)
+		sum = max(sum, 0)
+	}
+	return res
 }
