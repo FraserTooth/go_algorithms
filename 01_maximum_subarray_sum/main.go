@@ -14,5 +14,25 @@ package maximum_subarray_sum
 // Note that the empty list or array is also a valid sublist/subarray.
 
 func MaximumSubarraySum(numbers []int) int {
-	return 3
+	sum := 0
+
+	var totNums = len(numbers)
+
+	if totNums == 0 {
+		return 0
+	}
+
+	for i := 0; i < totNums; i++ {
+		if numbers[i] >= 0 {
+			tempSum := 0
+			for j := i; j < totNums; j++ {
+				tempSum += numbers[j]
+				if tempSum > sum {
+					sum = tempSum
+				}
+			}
+		}
+	}
+
+	return sum
 }
