@@ -41,11 +41,24 @@ func RemoveDuplicates(nums []int) int {
 	if len(nums) == 0 {
 		return 0
 	}
-	uniques := 0
-	for i := 1; i < len(nums); i++ {
-		if nums[i-1] != nums[i] {
-			uniques++
+
+	uniques := 1
+
+	b := nums[:0]
+	b = append(b, nums[0])
+	for i, x := range nums {
+		if i > 0 {
+			if nums[i-1] != x {
+				b = append(b, x)
+				uniques++
+			}
 		}
 	}
+
+	// Garbage Collection
+	for i := len(b); i < len(nums); i++ {
+		nums[i] = 0
+	}
+
 	return uniques
 }

@@ -9,7 +9,7 @@ import (
 
 func Test(t *testing.T) {
 	RegisterFailHandler(Fail)
-	RunSpecs(t, "Shopping Cart Suite")
+	RunSpecs(t, "Max Subarray Suite")
 }
 
 var _ = Describe("Tests", func() {
